@@ -1,0 +1,47 @@
+<div class="order-summary-container">
+
+    <div class="summary-header">
+        <h2 class="status-title">
+            ORDER STATUS
+        </h2>
+    </div>
+
+    <div class="address-section">
+        <app-address-cart [address]="order?.shippingAddress"></app-address-cart>
+    </div>
+
+    <div class="items-list-wrapper">
+
+        <ng-container *ngFor="let item of order?.orderItems">
+
+            <div class="product-item-card">
+
+                <div class="product-item-flex">
+                    
+                    <div class="image-container">
+                        <img [src]="[item.product.imageUrl]" alt="product" class="product-image">
+                    </div>
+
+                    <div class="product-details">
+                        <p class="item-title">{{item?.product?.title}}</p>
+                        
+                        <p class="item-meta">
+                            <span>Size:</span> <span class="highlight">{{item?.size}}</span>
+                        </p>
+                        
+                        <p class="item-meta">
+                            <span>Seller:</span> <span class="highlight">{{item?.product?.brand}}</span>
+                        </p>
+                        
+                        <p class="item-price">₹{{item?.product?.discountPrice}}</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </ng-container>
+
+    </div>
+
+</div>

@@ -1,0 +1,136 @@
+/* --- Global Checkout Layout --- */
+.checkout-page {
+  padding: 40px 5%;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+/* --- Address Banner --- */
+.address-wrapper {
+  margin-bottom: 32px;
+}
+
+.address-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 8px; /* Subtle padding around internal component */
+}
+
+/* --- Main Grid System --- */
+.checkout-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px; /* Main content vs sticky summary */
+  gap: 32px;
+  align-items: start;
+}
+
+/* --- Products Section --- */
+.products-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+::ng-deep .mat-divider {
+  border-top-color: rgba(255, 255, 255, 0.08) !important;
+  margin: 16px 0;
+}
+
+/* --- Price Summary Sticky Sidebar --- */
+.price-section {
+  position: sticky;
+  top: 100px;
+}
+
+.price-box {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.price-title {
+  color: #94a3b8;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.price-details {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: #cbd5e1;
+}
+
+.green-text {
+  color: #4ade80 !important; /* Vivid emerald green */
+  font-weight: 600;
+}
+
+.total-divider {
+  margin: 8px 0 !important;
+}
+
+.price-row.total {
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  padding-top: 8px;
+}
+
+.total-amount {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* --- Checkout Button --- */
+.checkout-btn {
+  width: 100%;
+  height: 54px !important;
+  margin-top: 32px !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+  border-radius: 12px !important;
+  background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%) !important;
+  color: white !important;
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+.checkout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(139, 92, 246, 0.5) !important;
+  filter: brightness(1.1);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 992px) {
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .price-section {
+    position: relative;
+    top: 0;
+  }
+
+  .checkout-page {
+    padding: 20px 4%;
+  }
+}

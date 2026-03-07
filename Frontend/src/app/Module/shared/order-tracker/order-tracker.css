@@ -1,0 +1,152 @@
+/* --- Main Tracker Card --- */
+.tracker-wrapper {
+  width: 100%;
+  /* Premium Glassmorphism Card to make the tracker pop */
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  /* Extra bottom padding gives the absolutely positioned text room to breathe */
+  padding: 32px 32px 64px 32px; 
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  margin-bottom: 24px;
+}
+
+/* --- Layout Container --- */
+.tracker-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* --- Individual Step Wrapper --- */
+.tracker-step {
+  display: flex;
+  align-items: center;
+  flex: 1; /* Stretches each step to perfectly space them out */
+  position: relative; /* Allows us to pin the text underneath the circle */
+}
+
+.tracker-step:last-child {
+  flex: 0; /* Prevents the final step from stretching since it has no line after it */
+}
+
+/* --- The Circle Node --- */
+.step-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2; /* Keeps circle on top of the connecting line */
+  transition: all 0.4s ease;
+  flex-shrink: 0;
+}
+
+.step-circle mat-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* State: Active/Completed Circle */
+.active-step {
+  background: linear-gradient(135deg, #60a5fa 0%, #8b5cf6 100%);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4); /* Purple glow */
+  color: #ffffff;
+  border: 2px solid transparent;
+}
+
+/* State: Inactive/Future Circle */
+.inactive-step {
+  background: #1f1f22; /* Matches your Charcoal theme */
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  color: #64748b; /* Muted gray icon */
+}
+
+/* --- Step Title Text --- */
+.step-title {
+  position: absolute;
+  top: 60px; /* Drops the text exactly below the circle */
+  left: 22px; /* Centers it perfectly based on the 44px circle width */
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: color 0.4s ease;
+}
+
+/* Selects the title if the circle before it is Active */
+.active-step ~ .step-title {
+  color: #ffffff; /* Crystal clear pure white */
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Selects the title if the circle before it is Inactive */
+.inactive-step ~ .step-title {
+  color: #94a3b8; /* Easy-to-read bright slate */
+}
+
+/* --- Connecting Lines --- */
+.step-line {
+  flex: 1; /* Automatically stretches to fill the gap between steps */
+  margin: 0 16px; /* Spacing so the line doesn't touch the circles */
+  display: flex;
+  align-items: center;
+}
+
+/* State: Completed Line */
+::ng-deep mat-divider.line-active {
+  width: 100%;
+  border-top-width: 3px !important;
+  border-top-color: #8b5cf6 !important; /* Premium purple */
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
+  transition: border-color 0.4s ease;
+}
+
+/* State: Future Line */
+::ng-deep mat-divider.line-inactive {
+  width: 100%;
+  border-top-width: 3px !important;
+  border-top-color: rgba(255, 255, 255, 0.1) !important;
+  transition: border-color 0.4s ease;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .tracker-wrapper {
+    padding: 24px 16px 56px 16px;
+  }
+  
+  .step-circle {
+    width: 36px;
+    height: 36px;
+  }
+
+  .step-circle mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .step-title {
+    top: 50px;
+    left: 18px; /* Recalculated for the 36px mobile circle */
+    font-size: 12px;
+    /* Allows very long step names to wrap safely on small phone screens */
+    white-space: normal; 
+    text-align: center;
+    width: 70px; 
+  }
+
+  .step-line {
+    margin: 0 8px; /* Tighter spacing on phones */
+  }
+}

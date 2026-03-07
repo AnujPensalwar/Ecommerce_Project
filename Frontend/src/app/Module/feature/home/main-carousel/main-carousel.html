@@ -1,0 +1,17 @@
+<div class="carousel-container" #carouselContainer>
+
+    <div class="carousel"
+        [ngStyle]="{
+            transform: 'translateX(-' + (currentSlide * containerWidth) + 'px)'
+        }">
+
+        <div class="carousel-item"
+             *ngFor="let item of carouselData">
+
+            <img [src]="item.image">
+
+        </div>
+
+    </div>
+
+</div>

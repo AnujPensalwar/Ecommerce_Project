@@ -1,0 +1,151 @@
+/* --- Global Wrapper --- */
+.management-wrapper {
+  padding: 30px;
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- Gradient Section Title --- */
+.section-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+}
+
+/* --- Table Container --- */
+.table-container {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow-x: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #e2e8f0;
+  text-align: left;
+}
+
+/* --- Header Styling --- */
+.admin-table thead {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.admin-table th {
+  padding: 18px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.8px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- Body Rows --- */
+.admin-table tbody tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+}
+
+.admin-table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.admin-table td {
+  padding: 16px 20px;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+/* --- Cell Customization --- */
+.id-cell {
+  color: #8b5cf6;
+  font-weight: 600;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.email-cell {
+  color: #cbd5e1;
+}
+
+.mobile-cell {
+  color: #94a3b8;
+}
+
+/* --- Status Badges --- */
+.role-badge {
+  background: rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.admin-role {
+  background: rgba(139, 92, 246, 0.15);
+  color: #a78bfa;
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+/* --- Orders & Dates --- */
+.order-count {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  color: #4ade80;
+}
+
+.order-count mat-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  color: #4ade80;
+}
+
+.date-cell {
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* --- Responsive Scrollbar --- */
+.table-container::-webkit-scrollbar {
+  height: 8px;
+}
+.table-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}

@@ -1,0 +1,46 @@
+<div class="order-details-page">
+
+    <div class="order-status-container">
+
+        <h2 class="status-title">Order Tracking</h2>
+
+        <div class="tracker-inner">
+            <app-order-tracker
+                [activeStep]="activeStep"
+                [steps]="steps">
+            </app-order-tracker>
+        </div>
+
+    </div>
+
+
+    <div class="order-content">
+
+        <div class="shipping-section">
+
+            <h1 class="section-title">Delivery Address</h1>
+
+            <div class="address-wrapper">
+                <app-address-cart></app-address-cart>
+            </div>
+
+        </div>
+
+
+        <div class="items-section">
+            
+            <h1 class="section-title">Order Items</h1>
+
+            <div class="items-list">
+                <div *ngFor="let orderItem of order" class="item-card-spacing">
+
+                    <app-order-card></app-order-card>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

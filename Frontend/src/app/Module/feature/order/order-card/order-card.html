@@ -1,0 +1,54 @@
+<div class="order-box" *ngIf="order">
+
+    <div class="order-grid" *ngFor="let item of order.orderItems">
+
+        <div class="product-info">
+
+            <div class="product-left">
+
+                <img 
+                    class="product-img"
+                    [src]="item.product.imageUrl"
+                    alt="product">
+
+                <div class="product-text">
+                    <p class="product-title">
+                        {{ item?.product?.title }}
+                    </p>
+
+                    <p class="product-meta">
+                        Size : {{ item?.size || 'N/A' }}
+                    </p>
+
+                    <p class="product-meta">
+                        Color : {{ item?.product.color }}
+                    </p>
+                    <p class="product-meta">
+                        Quantity : {{ item?.quentity || item?.quantity }}
+                     </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="product-price">
+            Rs {{ item?.product?.discountPrice }}
+        </div>
+
+        <div class="delivery-info">
+
+            <p class="delivery-date">
+                Ordered On :
+                {{ order?.createdAt | date:'mediumDate' }}
+            </p>
+
+            <p class="delivery-status">
+                Status : {{ order?.orderStatus }}
+            </p>
+
+        </div>
+
+    </div>
+
+</div>

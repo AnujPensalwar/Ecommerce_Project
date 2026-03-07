@@ -1,0 +1,120 @@
+/* --- Main Container --- */
+.order-box {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- The Grid Row --- */
+.order-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* Balanced spacing for info, price, and status */
+  align-items: center;
+  padding: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: background 0.3s ease;
+}
+
+.order-grid:last-child {
+  border-bottom: none;
+}
+
+.order-grid:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* --- Left Side: Image & Text --- */
+.product-left {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.product-img {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #1a1a1a;
+}
+
+.product-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.product-title {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.product-meta {
+  color: #94a3b8; /* Soft slate for metadata */
+  font-size: 13px;
+  margin: 0;
+}
+
+/* --- Center Side: Price --- */
+.product-price {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* --- Right Side: Delivery Info --- */
+.delivery-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: right;
+}
+
+.delivery-date {
+  color: #cbd5e1;
+  font-size: 13px;
+  margin: 0;
+}
+
+.delivery-status {
+  color: #4ade80; /* Emerald green for professional status look */
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin: 0;
+  /* Add a subtle glow to the status */
+  text-shadow: 0 0 10px rgba(74, 222, 128, 0.2);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .order-grid {
+    grid-template-columns: 1fr; /* Stack elements on small screens */
+    gap: 20px;
+    text-align: left;
+  }
+
+  .product-price {
+    text-align: left;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 15px;
+  }
+
+  .delivery-info {
+    text-align: left;
+  }
+}
+
+/* Standard property for text rendering compatibility */
+p, div {
+  background-clip: padding-box;
+}

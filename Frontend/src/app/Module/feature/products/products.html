@@ -1,0 +1,121 @@
+<div class="products-page">
+
+    <main class="products-container">
+
+        <div class="products-header">
+
+            <h1 class="page-title">Products</h1>
+
+            <div class="sort-box">
+                <button mat-button [matMenuTriggerFor]="sortMenu" class="sort-button">
+                    <span>Sort By</span>
+                    <mat-icon>expand_more</mat-icon>
+                </button>
+
+                <mat-menu #sortMenu="matMenu" class="dark-menu">
+                    <button (click)="handleSingleSelectFilter('price_high','sort')" mat-menu-item>Price: High to Low</button>
+                    <button (click)="handleSingleSelectFilter('price_low','sort')" mat-menu-item>Price: Low to High</button>
+                </mat-menu>
+            </div>
+
+        </div>
+
+        <mat-divider class="header-divider"></mat-divider>
+
+        <section class="products-body">
+
+            <aside class="filter-sidebar">
+
+                <div class="filter-header">
+                    <p>Filters</p>
+                    <mat-icon>filter_list</mat-icon>
+                </div>
+
+                <form>
+
+                    <div *ngFor="let item of filterData; let last=last">
+
+                        <div class="filter-section">
+
+                            <span class="filter-title">
+                                {{item.name}}
+                            </span>
+
+                            <div class="filter-options">
+
+                                <div *ngFor="let option of item.options"
+                                     class="filter-option">
+
+                                    <mat-checkbox
+                                        [name]="item.id"
+                                        [value]="option.value"
+                                        (click)="handleMultipleSelectFilter(option.value, item.id)">
+
+                                        <span class="option-text">{{option.label}}</span>
+
+                                    </mat-checkbox>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <mat-divider *ngIf="!last" class="filter-divider"></mat-divider>
+
+                    </div>
+
+
+                    <mat-divider class="filter-divider"></mat-divider>
+
+
+                    <div *ngFor="let item of singleFilterData; let last=last">
+
+                        <div class="filter-section">
+
+                            <span class="filter-title">
+                                {{item.name}}
+                            </span>
+
+                            <div class="filter-options">
+
+                                <div *ngFor="let option of item.options"
+                                     class="filter-option">
+
+                                    <mat-radio-button
+                                        [name]="item.id"
+                                        [value]="option.value"
+                                        (click)="handleSingleSelectFilter(option.value, item.id)">
+
+                                        <span class="option-text">{{option.label}}</span>
+
+                                    </mat-radio-button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <mat-divider *ngIf="!last" class="filter-divider"></mat-divider>
+
+                    </div>
+
+                </form>
+
+            </aside>
+
+
+            <div class="products-grid">
+
+                <ng-container *ngFor="let item of products; trackBy: trackByProduct">
+                    <app-product-cart [product]="item"></app-product-cart>
+                </ng-container>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>

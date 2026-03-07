@@ -1,0 +1,81 @@
+<div class="cart-card">
+
+    <div class="cart-top">
+
+        <div class="image-box">
+            <img class="product-img"
+                [src]='cartItem?.product?.imageUrl'
+                alt="">
+        </div>
+
+        <div class="product-info">
+
+            <p class="product-title">
+                {{cartItem?.product?.title}}
+            </p>
+
+            <p class="product-meta">
+                Size : {{cartItem?.size}}, Black
+            </p>
+
+            <p class="product-meta seller">
+                Seller : {{cartItem?.product?.brand}}
+            </p>
+
+            <div class="price-row">
+
+                <p class="old-price">
+                    ₹{{cartItem?.product?.price}}
+                </p>
+
+                <p class="new-price">
+                    ₹{{cartItem?.product?.discountPrice}}
+                </p>
+
+                <p class="discount">
+                    {{cartItem?.product?.discountPercent}}% off
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div *ngIf="showButton" class="cart-bottom">
+
+        <div class="quantity-box">
+
+            <button mat-mini-fab color="accent"
+                (click)="updateCartItem(-1)"
+                [disabled]="cartItem.quantity===1">
+
+                <mat-icon>remove</mat-icon>
+
+            </button>
+
+            <span class="quantity">
+                {{ cartItem?.quantity }}
+            </span>
+
+            <button mat-mini-fab color="accent"
+                (click)="updateCartItem(1)"
+                [disabled]="false">
+
+                <mat-icon>add</mat-icon>
+
+            </button>
+
+        </div>
+
+        <button mat-stroked-button
+            color="accent"
+            class="remove-btn"
+            (click)="removeCartItem()">
+            Remove
+        </button>
+
+    </div>
+
+</div>

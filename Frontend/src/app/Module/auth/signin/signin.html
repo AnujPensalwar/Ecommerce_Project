@@ -1,0 +1,46 @@
+<div class="auth-wrapper">
+  <div class="glass-card">
+    <div class="form-header">
+      <h1 class="premium-title">Shop With <span>Anuj</span></h1>
+      <p class="subtitle">Welcome back! Please login to your account.</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="auth-form">
+      
+      <mat-form-field appearance="outline" class="w-full custom-field">
+        <mat-label>Email Address</mat-label>
+        <input matInput formControlName="email" placeholder="name@example.com" required email>
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error *ngIf="loginForm.controls['email'].hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="loginForm.controls['email'].hasError('email')">Enter a valid email</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full custom-field">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" required>
+        <mat-icon matSuffix>lock</mat-icon>
+        <mat-error *ngIf="loginForm.controls['password'].hasError('required')">Password is required</mat-error>
+        <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">Minimum 8 characters</mat-error>
+      </mat-form-field>
+
+      <div *ngIf="loginError" class="error-banner">
+        <mat-icon>error_outline</mat-icon> {{ loginError }}
+      </div>
+
+      <button mat-raised-button color="primary" class="login-btn" [disabled]="!loginForm.valid">
+        LOGIN
+      </button>
+
+      <div class="form-footer">
+        <span>New to the shop?</span>
+        <button type="button" mat-button class="register-link" (click)="changeTemplete()">
+          CREATE ACCOUNT
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+

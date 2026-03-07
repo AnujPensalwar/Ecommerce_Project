@@ -1,0 +1,114 @@
+/* --- Main Card Container --- */
+.productCart {
+  width: 100%;
+  max-width: 280px;
+  background: rgba(255, 255, 255, 0.03); /* Extremely subtle glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hover Effect: Lifting the card and adding a purple glow */
+.productCart:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(139, 92, 246, 0.5); /* Soft purple border on hover */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* --- Image Section --- */
+.product-image {
+  width: 100%;
+  height: 320px; /* Consistent height for product grid */
+  overflow: hidden;
+  background: #1a1a1a;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.productCart:hover .product-image img {
+  transform: scale(1.08); /* Slow zoom effect on hover */
+}
+
+/* --- Content Wrapper --- */
+.textPart {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* --- Product Info --- */
+.product-info p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.brand {
+  color: #94a3b8; /* Slate gray */
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px !important;
+}
+
+.title {
+  color: #ffffff; /* Pure white for high visibility */
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Keeps titles on one line */
+}
+
+.color {
+  color: #64748b;
+  font-size: 13px;
+  margin-top: 2px !important;
+}
+
+/* --- Price Section --- */
+.price-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.discount-price {
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.original-price {
+  color: #64748b;
+  font-size: 13px;
+  text-decoration: line-through;
+  margin: 0;
+}
+
+.discount-percent {
+  color: #4ade80; /* Vibrant emerald green for the discount */
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* --- Visual Polish for Text Rendering --- */
+p {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,84 @@
+/* --- Card Container --- */
+.product-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  /* Optional: Set a max-width if you aren't using CSS Grid for your layout */
+  width: 100%;
+  max-width: 300px; 
+}
+
+/* Hover Effects for the Card */
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6);
+  /* Subtle purple tint on hover to match the brand accent */
+  border-color: rgba(139, 92, 246, 0.3);
+}
+
+/* --- Image Box --- */
+.image-box {
+  width: 100%;
+  aspect-ratio: 4 / 5; /* Creates a nice tall product image. Change to 1/1 for square */
+  overflow: hidden;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.2); /* Placeholder color while loading */
+}
+
+/* Image Styling & Hover Zoom */
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .image-box img {
+  transform: scale(1.08);
+}
+
+/* --- Product Info Section --- */
+.product-info {
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4) 0%, transparent 100%);
+}
+
+/* --- Typography --- */
+.brand {
+  margin: 0;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  /* Gradient text to match the "Anuj" branding */
+  background: linear-gradient(135deg, #60a5fa 0%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.title {
+margin: 0;
+  color: #f8fafc;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  /* Truncates the text with an ellipsis (...) if it goes over 2 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2; /* Added standard property for forward compatibility */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

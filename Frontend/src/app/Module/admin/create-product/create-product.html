@@ -1,0 +1,140 @@
+<div class="admin-container">
+  <div class="form-wrapper">
+    
+    <div class="header-box">
+        <h2 class="form-title">{{ isEditMode ? 'Update Product' : 'Create New Product' }}</h2>
+        <p class="form-subtitle">Fill in the information below to update your inventory</p>
+    </div>
+
+    <div *ngIf="successMessage" class="notification-toast">
+      <mat-icon>check_circle</mat-icon>
+      {{ successMessage }}
+    </div>
+
+    <form (ngSubmit)="onSubmit()" class="product-form">
+      
+      <div class="input-row">
+        <div class="input-group">
+          <label>Image URL</label>
+          <div class="input-wrapper">
+            <input [(ngModel)]="product.imageUrl" name="img" placeholder="https://image-link.com">
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Brand Name</label>
+          <div class="input-wrapper">
+            <input [(ngModel)]="product.brand" name="brand" placeholder="e.g. Nike, Zara">
+          </div>
+        </div>
+      </div>
+
+      <div class="input-row">
+        <div class="input-group">
+          <label>Product Title</label>
+          <div class="input-wrapper">
+            <input [(ngModel)]="product.title" name="title" placeholder="Full product name">
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Color</label>
+          <div class="input-wrapper">
+            <input [(ngModel)]="product.color" name="color" placeholder="e.g. Midnight Black">
+          </div>
+        </div>
+      </div>
+
+      <div class="input-row triple">
+        <div class="input-group">
+          <label>Top Category</label>
+          <select [(ngModel)]="topLevel" name="top">
+            <option value="Men">Men</option>
+            <option value="Women">Women</option>
+            <option value="kids">Kids</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>Second Level</label>
+          <select [(ngModel)]="secondLevel" name="second">
+            <option value="Clothing">Clothing</option>
+            <option value="Accessories">Accessories</option>
+             <option value="Brands">Brands</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>Third Level</label>
+          <select [(ngModel)]="thirdLevel" name="third">
+            <option value="tshirt">T-Shirts</option>
+             <option value="shirt">Shirts</option>
+             <option value="jeans">Jeans</option>
+             <option value="kurta">Kurtas</option>
+             <option value="hoodie">Hoodies</option>
+             <option value="kurti">Kurtis</option>
+             <option value="saree">Sarees</option>
+             <option value="gown">Gowns</option>
+             <option value="lehenga">Lehengas</option>
+             <option value="top">Tops</option>
+            <option value="watch">Watches</option>
+            <option value="belt">Belts</option>
+            <option value="wallet">Wallets</option>
+            <option value="cap">Caps</option>
+            <option value="shoes">Shoes</option>
+            <option value="sunglasses">Sunglasses</option>
+            <option value="handbag">Handbags</option>
+            <option value="jewellery">Jewellery</option>
+            <option value="scarve">Scarves</option>
+            <option value="clutche">Clutches</option>
+            <option value="hair-accessories">Hair Accessories</option>
+            <option value="nike">Nike</option>
+            <option value="adidas">Adidas</option>
+            <option value="puma">Puma</option>
+            <option value="levis">Levis</option>
+            <option value="peter-england">Peter-England</option>
+            <option value="biba">Biba</option>
+            <option value="libas">Libas</option>
+            <option value="global-desi">Global-Desi</option>
+            <option value="zara">Zara</option>
+            <option value="h&m">H&M</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="input-group full-width">
+        <label>Product Description</label>
+        <textarea [(ngModel)]="product.discription" name="desc" rows="4" placeholder="Describe the material, fit, and style..."></textarea>
+      </div>
+
+      <div class="input-row triple">
+        <div class="input-group">
+          <label>Base Price (₹)</label>
+          <input type="number" [(ngModel)]="product.price" name="p">
+        </div>
+        <div class="input-group">
+          <label>Discounted (₹)</label>
+          <input type="number" [(ngModel)]="product.discountPrice" name="dp">
+        </div>
+        <div class="input-group">
+          <label>Discount %</label>
+          <input type="number" [(ngModel)]="product.discountPercent" name="pct">
+        </div>
+      </div>
+
+      <div class="size-container">
+        <h3 class="inventory-title">Inventory Management</h3>
+        <div class="size-grid">
+            <div class="input-group" *ngFor="let s of product.size; let i = index">
+              <label>Size {{s.name}}</label>
+              <input [(ngModel)]="s.quentity" [name]="'sqty'+i" placeholder="Qty">
+            </div>
+            <div class="input-group total-stock-group">
+              <label>Total Global Stock</label>
+              <input type="number" [(ngModel)]="product.quentity" name="totalStock" class="highlight-input">
+            </div>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        {{ isEditMode ? 'SAVE CHANGES' : 'PUBLISH PRODUCT' }}
+      </button>
+    </form>
+  </div>
+</div>

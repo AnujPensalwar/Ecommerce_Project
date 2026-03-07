@@ -1,0 +1,68 @@
+/* --- Global Page Background & Wrapper --- */
+.home-page-wrapper {
+  min-height: 100vh;
+  /* Premium Deep Charcoal Gradient (Creates a subtle spotlight effect) */
+  background: radial-gradient(ellipse at top, #1f1f22 0%, #09090b 80%); 
+  
+  margin-top: 0 !important; 
+  padding-top: 8px;
+  padding-bottom: 80px; 
+  
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden; 
+  animation: pageFadeIn 0.8s ease-out;
+}
+
+/* --- Carousel Layout --- */
+.carousel-section {
+  width: 100%;
+  max-width: 100%; /* Changed from 1400px to take full screen width */
+  margin: 0 auto 24px auto; 
+  padding: 0 16px; /* Reduced side padding */
+  box-sizing: border-box;
+}
+
+/* --- Sliders Layout --- */
+.sliders-section {
+  display: flex;
+  flex-direction: column;
+  gap: 32px; 
+}
+
+
+.sliders-section > * {
+  width: 100%;
+  display: block;
+}
+
+/* --- Smooth Load Animation --- */
+@keyframes pageFadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(15px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* --- Mobile Responsiveness Adjustments --- */
+@media (max-width: 768px) {
+  .home-page-wrapper {
+    /* Tighter top padding for mobile screens */
+    padding-top: 8px;
+    padding-bottom: 40px;
+  }
+  
+  .carousel-section {
+    /* Tighter space below carousel on mobile */
+    margin-bottom: 16px;
+    padding: 0 16px;
+  }
+  
+  .sliders-section {
+    /* Tighter space between categories on mobile */
+    gap: 24px; 
+  }
+}

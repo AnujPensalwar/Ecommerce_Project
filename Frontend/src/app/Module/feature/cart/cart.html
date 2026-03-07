@@ -1,0 +1,79 @@
+<main class="cart-main">
+
+    <div class="cart-layout">
+
+        <section class="cart-items-section">
+
+            <div class="cart-box">
+
+                <ng-container *ngIf="cart">
+                   
+                    <div *ngFor="let item of cartItems; let last=last">
+                            
+                        <app-cart-items [cartItem]="item" [showButton]="true" ></app-cart-items>
+
+                        <mat-divider *ngIf="!last" class="custom-divider"></mat-divider>
+
+                    </div>
+
+                </ng-container>
+
+            </div>
+
+        </section>
+
+
+        <section class="price-section">
+
+            <ng-container *ngIf="cart">
+
+                <div class="price-box">
+
+                    <p class="price-title">PRICE DETAILS</p>
+
+                    <mat-divider class="custom-divider"></mat-divider>
+                    
+
+                    <div class="price-details">
+
+                        <div class="price-row">
+                            <span>Total Price</span>
+                            <span>Rs {{cart?.totalPrice}}</span>
+                        </div>
+
+                        <div class="price-row">
+                            <span>Discount</span>
+                            <span class="green-text">- Rs{{ cart?.discount }}</span>
+                        </div>
+
+                        <div class="price-row">
+                            <span>Delivery Charges</span>
+                            <span class="green-text">Free</span>
+                        </div>
+
+                        <div class="price-row total">
+                            <span>Total Amount</span>
+                            <span class="green-text">Rs{{ cart.totalDiscountPrice }}</span>
+                        </div>
+
+                    </div>
+
+                    <button
+                        (click)="navigateToCheckout()"
+                        class="checkout-btn"
+                        color="accent"
+                        mat-raised-button>
+
+                        CHECKOUT
+
+                    </button>
+
+                </div>
+
+            </ng-container>
+
+        </section>
+
+    </div>
+
+</main>

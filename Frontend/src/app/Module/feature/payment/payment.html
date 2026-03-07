@@ -1,0 +1,81 @@
+<div class="checkout-page">
+
+    <div class="address-wrapper">
+
+        <div class="address-card">
+            <app-address-cart [address]="order?.shippingAddress" showButton="false"></app-address-cart>
+        </div>
+
+    </div>
+
+
+    <div class="checkout-grid">
+
+        <div class="products-section">
+
+            <div class="products-box">
+
+                <div *ngFor="let item of order?.orderItems; let last=last">
+
+                    <app-cart-items [cartItem]="item"></app-cart-items>
+
+                    <mat-divider *ngIf="!last"></mat-divider>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <section class="price-section">
+
+            <div class="price-box">
+
+                <p class="price-title">PRICE DETAILS</p>
+
+                <mat-divider></mat-divider>
+
+                <div class="price-details">
+
+                    <div class="price-row">
+                        <span>Total Price</span>
+                        <span>Rs {{order?.totalPrice}}</span>
+                    </div>
+
+                    <div class="price-row">
+                        <span>Discount</span>
+                        <span class="green-text">- Rs {{order?.discount}}</span>
+                    </div>
+
+                    <div class="price-row">
+                        <span>Delivery Charges</span>
+                        <span class="green-text">Free</span>
+                    </div>
+
+                    <mat-divider class="total-divider"></mat-divider>
+
+                    <div class="price-row total">
+                        <span>Total Amount</span>
+                        <span class="total-amount">Rs {{order?.totalDiscountprice}}</span>
+                    </div>
+
+                </div>
+
+                <button
+                    class="checkout-btn"
+                    color="accent"
+                    mat-raised-button
+                    (click)="redirectToPayment()">
+
+                    CHECKOUT
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>

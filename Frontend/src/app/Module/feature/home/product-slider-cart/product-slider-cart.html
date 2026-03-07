@@ -1,0 +1,16 @@
+<div class="container">
+
+<p class="title">{{title}}
+</p>
+
+<div class="product-container">
+
+
+    <div *ngFor="let item of products">
+
+<app-home-product-cart  [product]="item"></app-home-product-cart>
+
+    </div>
+
+</div>
+</div>

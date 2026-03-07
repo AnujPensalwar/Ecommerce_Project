@@ -1,0 +1,58 @@
+<div class="management-wrapper">
+  
+  <h2 class="section-title">CUSTOMERS MANAGEMENT</h2>
+
+  <div class="table-container">
+
+    <table class="admin-table">
+
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Customer Name</th>
+          <th>Email Address</th>
+          <th>Mobile</th>
+          <th>Role</th>
+          <th>Total Orders</th>
+          <th>Registration Date</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let user of users">
+
+          <td class="id-cell">#{{ user.id }}</td>
+
+          <td class="name-cell">
+            <div class="user-info">
+               <span class="user-avatar">{{ user.firstName[0] }}{{ user.lastName[0] }}</span>
+               <span>{{ user.firstName }} {{ user.lastName }}</span>
+            </div>
+          </td>
+
+          <td class="email-cell">{{ user.email }}</td>
+
+          <td class="mobile-cell">{{ user.mobile }}</td>
+
+          <td>
+            <span class="role-badge" [class.admin-role]="user.role === 'ADMIN'">
+                {{ user.role }}
+            </span>
+          </td>
+
+          <td class="orders-cell">
+            <div class="order-count">
+                <mat-icon>shopping_bag</mat-icon>
+                {{ user.orders?.length || 0 }}
+            </div>
+          </td>
+
+          <td class="date-cell">{{ user.createdAt | date:'mediumDate' }}</td>
+
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+</div>

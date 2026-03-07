@@ -1,0 +1,83 @@
+/* --- Main Card Container --- */
+.address-card {
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer; 
+}
+
+.address-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(139, 92, 246, 0.4); 
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* --- User Details (High Contrast) --- */
+.name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff; /* Pure white for maximum visibility */
+  margin: 0;
+  letter-spacing: 0.3px;
+  text-transform: capitalize;
+}
+
+.address {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #cbd5e1; /* BOOSTED: Lighter slate gray so it is very easy to read */
+  margin: 0;
+}
+
+/* --- Phone Section (High Contrast) --- */
+.phone-section {
+  margin-top: 14px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.15); /* Slightly brighter divider */
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.phone-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #94a3b8; /* BOOSTED: Brighter gray for the label */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.phone-number {
+  font-size: 16px;
+  font-weight: 500;
+  color: #f8fafc; /* BOOSTED: Almost pure white for the important numbers */
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* --- Mobile Adjustments --- */
+@media (max-width: 600px) {
+  .address-card {
+    padding: 20px;
+  }
+  .name {
+    font-size: 16px;
+  }
+  .address {
+    font-size: 14px;
+  }
+  .phone-number {
+    font-size: 15px;
+  }
+}

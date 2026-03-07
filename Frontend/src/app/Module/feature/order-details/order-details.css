@@ -1,0 +1,113 @@
+/* --- Main Page Layout --- */
+.order-details-page {
+  padding: 40px 8%;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 32px; /* Uniform spacing between main sections */
+}
+
+/* --- Top Status/Tracker Section --- */
+.order-status-container {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.status-title {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 32px;
+  letter-spacing: -0.5px;
+}
+
+.tracker-inner {
+  padding: 20px 0;
+}
+
+/* --- Content Layout (Shipping + Items) --- */
+.order-content {
+  display: grid;
+  grid-template-columns: 1fr; /* Stacked by default for clean vertical flow */
+  gap: 32px;
+}
+
+/* --- Section Titles --- */
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+  padding-left: 4px;
+  border-left: 4px solid #8b5cf6; /* Purple accent bar */
+  line-height: 1.2;
+}
+
+/* --- Shipping Box Styling --- */
+.shipping-section {
+  width: 100%;
+}
+
+.address-wrapper {
+  background: rgba(255, 255, 255, 0.01);
+  border-radius: 16px;
+  /* app-address-cart should have its own internal padding/style */
+}
+
+/* --- Items Section Styling --- */
+.items-section {
+  width: 100%;
+}
+
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item-card-spacing {
+  /* Added spacing so the order-cards don't touch each other */
+  margin-bottom: 8px;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* --- Professional Text Handling --- */
+h1, h2 {
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+  .order-details-page {
+    padding: 24px 4%;
+  }
+}
+
+@media (max-width: 768px) {
+  .order-status-container {
+    padding: 20px;
+  }
+  
+  .status-title {
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+}

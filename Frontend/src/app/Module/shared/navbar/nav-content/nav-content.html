@@ -1,0 +1,52 @@
+<div class="nav-wrapper">
+
+    <div class="nav-content">
+
+        <div class="nav-sections">
+
+            <div class="nav-column" *ngFor="let section of category[selectedSection]?.sections">
+
+                <h3 class="section-title">
+                    {{section.name}}
+                </h3>
+
+                <button (click)="handleNavigate('/'+category[selectedSection].id+'/'+section.id+'/'+item.id)"
+                         class="nav-item" mat-button *ngFor="let item of section.items">
+                    {{item.name}}
+                </button>
+
+            </div>
+
+
+            <div class="nav-image-box">
+
+                <div class="image-container">
+                    <img class="nav-image"
+                        src="https://melmagazine.com/wp-content/uploads/2018/08/1NPTw5uIT4COChKKS4_Bopg.png" alt="">
+                </div>
+
+                <p class="arrival-text">
+                    New Arrival
+                </p>
+
+            </div>
+            <div class="nav-image-box">
+
+                <div class="image-container">
+                    <img class="nav-image"
+                        src="https://img.freepik.com/premium-photo/beautiful-asian-woman-carrying-colorful-bags-shopping-online-with-mobile-phone_8087-3877.jpg"
+                        alt="">
+                </div>
+
+                <p class="arrival-text">
+                    New Arrival
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>

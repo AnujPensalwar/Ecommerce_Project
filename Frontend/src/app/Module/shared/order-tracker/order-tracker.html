@@ -1,0 +1,36 @@
+<div class="tracker-wrapper">
+
+    <div class="tracker-container">
+
+        <div *ngFor="let step of steps; let index=index; let last=last" class="tracker-step">
+
+            <div class="step-circle" [ngClass]="{
+        'active-step': step.id <= activeStep,
+        'inactive-step': step.id > activeStep
+    }">
+
+                <mat-icon>
+                    {{ step.id <= activeStep ? 'check_circle' : 'radio_button_unchecked' }} </mat-icon>
+
+            </div>
+
+
+            <span class="step-title">
+                {{step.title}}
+            </span>
+
+            <div *ngIf="!last" class="step-line">
+
+                <mat-divider [ngClass]="{
+  'line-active': step.id < activeStep,
+  'line-inactive': step.id >= activeStep
+}">
+                </mat-divider>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

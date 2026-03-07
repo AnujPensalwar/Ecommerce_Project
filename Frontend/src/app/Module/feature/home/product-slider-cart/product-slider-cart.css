@@ -1,0 +1,91 @@
+/* --- Main Section Container --- */
+.container {
+  width: 100%;
+  max-width: 100%; /* Changed from 1400px to take full screen width */
+  margin: 0 auto;
+  padding: 40px 16px; /* Reduced side padding */
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+}
+
+/* --- Section Title --- */
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #f8fafc;
+  margin: 0 0 36px 0;
+  letter-spacing: 0.5px;
+  position: relative;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+/* Premium gradient underline for the title */
+.title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 60%;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(135deg, #60a5fa 0%, #8b5cf6 100%);
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.4);
+}
+
+/* --- HORIZONTAL PRODUCT SLIDER --- */
+.product-container {
+  display: flex;
+  gap: 24px; /* Space between each product card */
+  overflow-x: auto; /* Enables horizontal scrolling */
+  overflow-y: visible; /* Allows hover effects (like lifting the card) to not get cut off */
+  padding: 10px 10px 40px 10px; /* Extra padding so box-shadows on hover don't clip */
+  margin: -10px; /* Offsets the padding to keep alignment perfect */
+  
+  /* Creates a smooth, app-like "snapping" effect when scrolling */
+  scroll-snap-type: x mandatory; 
+  scroll-behavior: smooth;
+  
+  /* Hides the ugly default browser scrollbar for a cleaner look */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hides scrollbar for Chrome, Safari and Opera */
+.product-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Individual Product Wrapper (The *ngFor div) --- */
+.product-container > div {
+  flex: 0 0 auto; /* Forces the item to keep its width and NOT shrink to fit the screen */
+  width: 280px; /* Fixed width for each card in the slider */
+  scroll-snap-align: start; /* Makes sure the slider perfectly stops at the start of a card */
+  display: flex;
+}
+
+/* Ensures your child component fills the wrapper properly */
+.product-container > div > app-home-product-cart {
+  width: 100%;
+}
+
+/* --- Mobile Adjustments --- */
+@media (max-width: 600px) {
+  .container {
+    padding: 32px 16px;
+  }
+  
+  .title {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .product-container {
+    gap: 16px;
+  }
+  
+  .product-container > div {
+    /* Slightly smaller cards on mobile phones so you can see the edge of the next card peeking in */
+    width: 240px; 
+  }
+}

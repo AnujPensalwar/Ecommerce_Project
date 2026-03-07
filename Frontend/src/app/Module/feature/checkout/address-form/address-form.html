@@ -1,0 +1,77 @@
+<div class="address-grid">
+
+    <div *ngIf="address?.length">
+
+        <h3>Your Saved Addresses</h3>
+
+        <div *ngFor="let address of address" class="saved-address-box">
+
+            <p><b>{{address.firstName}} {{address.lastName}}</b></p>
+            <p>{{address.streetAddress}}</p>
+            <p>{{address.city}}, {{address.state}} - {{address.zipCode}}</p>
+            <p>Mobile: {{address.mobile}}</p>
+
+            <button mat-raised-button color="primary" (click)="deliverHere(address)">
+                Deliver Here
+            </button>
+            <button class="remove-btn">
+                Remove
+            </button>
+
+        </div>
+
+        
+
+
+    </div>
+    <p>Please enter your delivery details below.</p>
+
+    <div class="address-right">
+        <h3 style="margin-bottom: 2rem; font-weight: 700; font-size: 1.5rem;">Add New Address</h3>
+
+        <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
+            <div class="form-grid">
+
+                <mat-form-field appearance="fill">
+                    <mat-label>First Name</mat-label>
+                    <input matInput formControlName="firstName" type="text">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput formControlName="lastName" type="text">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Street Address</mat-label>
+                    <textarea matInput formControlName="streetAddress" rows="3"></textarea>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>City</mat-label>
+                    <input matInput formControlName="city" type="text">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>State</mat-label>
+                    <input matInput formControlName="state" type="text">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Zip Code</mat-label>
+                    <input matInput formControlName="zipCode" type="text">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Mobile Number</mat-label>
+                    <input matInput formControlName="mobile" type="text">
+                </mat-form-field>
+
+                <button class="submit-btn" mat-raised-button color="accent" type="submit">
+                    Save and Deliver Here
+                </button>
+
+            </div>
+        </form>
+    </div>
+</div>

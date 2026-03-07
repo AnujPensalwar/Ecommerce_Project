@@ -1,0 +1,61 @@
+/* --- Container Layout --- */
+.rating-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px; /* Tight, professional spacing */
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.03); /* Subtle glass background */
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* --- Base Star Styling --- */
+.star {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+/* The actual Mat-Icon */
+.star mat-icon {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  /* Default color for empty stars (high visibility slate) */
+  color: rgba(148, 163, 184, 0.4); 
+  transition: all 0.3s ease;
+}
+
+/* --- Active State (Filled Stars) --- */
+.star.active mat-icon {
+  /* Premium Gold/Amber Gradient effect via color */
+  color: #fbbf24 !important; 
+  /* Subtle glow to make stars pop against the dark background */
+  filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.5));
+}
+
+/* --- Interactive Effects --- */
+/* Scale up the star slightly when hovering */
+.star:hover {
+  transform: scale(1.2);
+}
+
+/* Glow brighter when hovering over a star */
+.star:hover mat-icon {
+  color: #fcd34d !important;
+  filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.8));
+}
+
+/* Slightly dim other stars when a specific star is pressed */
+.star:active {
+  transform: scale(0.9);
+  transition: transform 0.1s;
+}
+
+/* --- Visibility Fix for Angular Material --- */
+::ng-deep .mat-icon {
+  user-select: none;
+}

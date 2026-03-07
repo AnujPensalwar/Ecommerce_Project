@@ -1,0 +1,23 @@
+<div (click)="navigate()" class="productCart">
+
+    <div class="product-image">
+        <img [src]="product.imageUrl" alt="">
+    </div>
+
+    <div class="textPart">
+
+        <div class="product-info">
+            <p class="brand">{{product.brand}}</p>
+            <p class="title">{{product.title}}</p>
+            <p class="color">{{product.color}}</p>
+        </div>
+
+        <div class="price-section">
+            <p class="discount-price">Rs {{product.discountPrice}}</p>
+            <p class="original-price">Rs {{product.price}}</p>
+            <p class="discount-percent">{{product.discountPercent}} %</p>
+        </div>
+
+    </div>
+
+</div>

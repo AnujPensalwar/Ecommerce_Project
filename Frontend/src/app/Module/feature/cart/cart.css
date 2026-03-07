@@ -1,0 +1,125 @@
+/* --- Main Cart Wrapper --- */
+.cart-main {
+  width: 100%;
+  max-width: 100%; /* Changed from 1200px to take full screen width */
+  margin: 0 auto;
+  padding: 40px 16px; /* Reduced side padding to match your home page */
+  box-sizing: border-box;
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  color: #f8fafc;
+}
+
+/* --- Responsive Grid Layout --- */
+.cart-layout {
+  display: grid;
+  /* 2fr for the cart items, 1fr for the price details */
+  grid-template-columns: 2fr 1fr; 
+  gap: 32px;
+  align-items: start; /* Required to make the sticky position work */
+}
+
+/* --- Glassmorphism Containers --- */
+.cart-box, .price-box {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Price Details Sticky Sidebar --- */
+.price-section {
+  position: sticky;
+  top: 100px; /* Sticks to the top of the screen (adjust based on your navbar height) */
+}
+
+.price-title {
+  color: #94a3b8;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin: 0 0 16px 0;
+}
+
+/* --- Divider Overrides for Dark Theme --- */
+::ng-deep mat-divider.custom-divider {
+  border-top-color: rgba(255, 255, 255, 0.1) !important;
+  margin: 20px 0 !important;
+}
+
+/* --- Price Rows --- */
+.price-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  color: #cbd5e1;
+}
+
+.green-text {
+  color: #34d399; /* Bright emerald green for discounts/free items */
+  font-weight: 600;
+}
+
+.price-row.total {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 8px;
+  padding-top: 24px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+/* --- Checkout Button --- */
+::ng-deep .checkout-btn.mat-mdc-raised-button {
+  width: 100%;
+  height: 54px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #60a5fa 0%, #8b5cf6 100%);
+  color: #ffffff;
+  margin-top: 32px;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.3);
+}
+
+::ng-deep .checkout-btn.mat-mdc-raised-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+::ng-deep .checkout-btn.mat-mdc-raised-button:active {
+  transform: translateY(0);
+}
+
+/* --- Mobile Responsiveness Adjustments --- */
+@media (max-width: 900px) {
+  .cart-layout {
+    /* Stacks the price box under the cart items on smaller screens */
+    grid-template-columns: 1fr; 
+  }
+  
+  .price-section {
+    position: static; /* Removes sticky behavior on mobile */
+  }
+
+  .cart-main {
+    padding: 24px 16px;
+  }
+
+  .cart-box, .price-box {
+    padding: 20px;
+  }
+}

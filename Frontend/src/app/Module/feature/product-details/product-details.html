@@ -1,0 +1,172 @@
+<div class="product-page">
+
+    <div *ngIf="showNotification" class="toast">
+        <mat-icon>check_circle</mat-icon>
+        <span>Product Added To Cart</span>
+    </div>
+
+    <nav class="breadcrumb">
+        Home / Clothes / Women / Saree
+    </nav>
+
+
+    <section class="product-layout">
+
+        <div class="product-image-box">
+            <img [src]='product.imageUrl' class="product-image" alt="product image">
+        </div>
+
+
+        <div class="product-details">
+
+            <div class="product-title-box">
+                <p class="brand">{{product.brand}}</p>
+                <p class="title">{{product.title}}</p>
+            </div>
+
+
+            <div class="price-row">
+                <span class="discount-price">₹{{product.discountPrice}}</span>
+                <span class="original-price">₹{{product.price}}</span>
+                <span class="discount-percent">{{product.discountPercent}}% OFF</span>
+            </div>
+
+
+            <div class="size-box">
+                <p class="size-title">Select Size</p>
+
+                <mat-radio-group class="size-group" [(ngModel)]="selectedSize">
+                    <mat-radio-button value="s">S</mat-radio-button>
+                    <mat-radio-button value="M">M</mat-radio-button>
+                    <mat-radio-button value="L">L</mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+
+            <button class="add-cart-btn" (click)="handleAddToCart()" mat-raised-button>
+                <mat-icon>shopping_cart</mat-icon>
+                Add To Cart
+            </button>
+
+
+            <div class="description-box">
+                <p class="description">
+                    {{product.description}}
+                </p>
+
+                <div class="highlight-container">
+                    <p class="highlight-text">✔ Breathable Fabric</p>
+                    <p class="highlight-text">✔ Modern Fit</p>
+                    <p class="highlight-text">✔ Long Lasting Color</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+   <section class="reviews-section">
+
+  <h2 class="section-title">Customer Reviews</h2>
+
+  <div class="reviews-main-container">
+
+    <div class="reviews-left">
+
+      <div class="review-form-card">
+
+        <h3>Add Your Review</h3>
+
+        <div class="star-input">
+          <mat-icon *ngFor="let star of [1,2,3,4,5]"
+                    (click)="rating = star"
+                    [class.active]="star <= rating">
+            {{ star <= rating ? 'star' : 'star_border' }}
+          </mat-icon>
+        </div>
+
+        <textarea
+          placeholder="Write your review..."
+          [(ngModel)]="comment">
+        </textarea>
+
+        <button class="submit-review-btn" (click)="submitRating(); submitReview()">
+          Submit Review
+        </button>
+
+      </div>
+
+      <div class="reviews-box">
+
+        <div *ngIf="reviews.length === 0" class="no-review">
+          No reviews yet. Be the first to review this product!
+        </div>
+
+        <div *ngFor="let item of reviews" class="review-item">
+
+          <div class="review-header">
+            <div class="user-info">
+              <div class="user-name">
+                {{item.user?.firstName}} {{item.user?.lastName}}
+              </div>
+              <div class="review-date">
+                {{item.createdAt | date:'mediumDate'}}
+              </div>
+            </div>
+
+            <div class="review-stars">
+              <mat-icon *ngFor="let star of [1,2,3,4,5]"
+                        [class.active]="star <= item.rating">
+                {{ star <= item.rating ? 'star' : 'star_border' }}
+              </mat-icon>
+            </div>
+          </div>
+
+          <div class="review-text">
+            {{item.review}}
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="summary-box">
+
+      <h3>Overall Rating</h3>
+
+      <div class="average-rating-display">
+        <span class="rating-number">
+            {{ product?.averageRating ? (product.averageRating | number:'1.1-1') : '0.0' }}
+        </span>
+        
+        <div class="stars-row">
+            <mat-icon *ngFor="let star of [1,2,3,4,5]"
+                    [class.active]="star <= (product?.averageRating || 0)">
+                {{ star <= (product?.averageRating || 0) ? 'star' : 'star_border' }}
+            </mat-icon>
+        </div>
+        <p class="rating-subtitle">Based on customer feedback</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+    <section class="related-section">
+
+        <h1 class="related-title">You May Also Like</h1>
+
+        <div class="related-grid">
+            <div *ngFor="let item of relatedProducts">
+                <app-product-cart [product]="item"></app-product-cart>
+            </div>
+        </div>
+
+    </section>
+
+</div>

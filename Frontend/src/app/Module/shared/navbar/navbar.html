@@ -1,0 +1,75 @@
+<div class="navbar">
+
+    <div class="navbar-inner">
+
+        <div class="nav-left">
+
+            <div class="logo-box">
+                <img class="logo"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFFSSwtuQmBu-4wTqaPFmClCScFMVAZTMvYw&s"
+                alt="code with anuj">
+            </div>
+
+            <div class="nav-links">
+
+                <a routerLink="/" class="brand-name">
+                    Shop with Anuj
+                </a>
+
+                <button class="open-button" (click)="navigateTo('')" *ngIf="!isAdmin" mat-button>
+                    Home
+                </button>
+
+                <button class="open-button" (click)="openNavbarContent('mens')" *ngIf="isLoggedIn && !isAdmin" mat-button>
+                    Mens
+                </button>
+
+                <button class="open-button" (click)="openNavbarContent('womens')" *ngIf="isLoggedIn && !isAdmin" mat-button>
+                    Womens
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="nav-right">
+
+            <button (click)="navigateTo('cart')" *ngIf="isLoggedIn && !isAdmin" mat-icon-button class="cart-btn">
+                <mat-icon>shopping_cart</mat-icon>
+            </button>
+
+            <button (click)="handleOpenLoginModal()" *ngIf="!isLoggedIn"
+                    mat-raised-button
+                    color="accent"
+                    class="login-btn">
+                Login
+            </button>
+
+            <div *ngIf="userProfile" class="profile-section">
+
+                <span class="username">{{userProfile.firstName}}</span>
+
+                <button mat-button [matMenuTriggerFor]="ProfileMenu" class="profile-trigger">
+                    <img class="profile-img"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs_aMoCDAkVZluRbcd0H1DA9exUnhbXNlzgA&s">
+                </button>
+
+                <mat-menu #ProfileMenu="matMenu" class="custom-dark-menu">
+                    <button mat-menu-item>Profile</button>
+                    <button mat-menu-item (click)="navigateTo('account/orders')" *ngIf="!isAdmin" >Orders</button>
+                    <button mat-menu-item (click)="handleLogout()" *ngIf="!isAdmin">LogOut</button>
+                </mat-menu>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div *ngIf="isNavbarContentOpen" class="modal-container">
+    <app-nav-content [selectedSection]="selectedSection"></app-nav-content>
+</div>

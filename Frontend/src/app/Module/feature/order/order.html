@@ -1,0 +1,44 @@
+<div class="orders-page">
+
+    <div class="orders-header">
+        My Orders
+    </div>
+
+    <div class="orders-layout">
+
+        <div class="filter-column">
+            <h3 class="filter-heading">Filters</h3>
+            <div *ngFor="let option of orderFilter" class="filter-item">
+
+                <mat-checkbox [id]="option.value" [value]="option.value">
+                    <span class="filter-label">
+                        {{option.label}}
+                    </span>
+                </mat-checkbox>
+
+            </div>
+
+        </div>
+
+
+        <div class="orders-column">
+
+            <div class="orders-list" >
+
+                <div 
+                    class="order-card-wrapper"
+                    *ngFor="let order of orders"
+                    (click)="navigateToOrderDetails(order.id)"
+                    >
+
+                    <app-order-card [order]="order"></app-order-card>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

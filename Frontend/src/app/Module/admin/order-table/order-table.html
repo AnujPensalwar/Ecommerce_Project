@@ -1,0 +1,81 @@
+<div class="management-wrapper">
+
+  <h2 class="section-title">ORDERS MANAGEMENT</h2>
+
+  <div class="table-container">
+
+    <table class="admin-table">
+
+      <thead>
+        <tr>
+          <th>Order ID</th>
+          <th>Customer</th>
+          <th>Total Items</th>
+          <th>Total Price</th>
+           <th>Final Amount</th>
+           <th>Payment Method</th>
+           <th>Payment ID</th>
+          <th>Current Status</th>
+          <th>Delivery Date</th>
+          <th>Placed On</th>
+          <th class="actions-header">Quick Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let order of orders">
+
+          <td class="id-cell">#{{ order.id }}</td>
+          
+          <td class="user-cell">
+            <div class="user-info">
+               <span class="user-icon"><mat-icon>person</mat-icon></span>
+               {{ order.user?.firstName }}
+            </div>
+          </td>
+
+          <td>{{ order.totalItem }}</td>
+
+          <td class="total-cell">₹ {{ order.totalPrice }}</td>
+          <td>₹ {{ order.totalDiscountprice }}</td>
+           <td>{{ order.paymentMethod }}</td>
+           <td>{{ order.paymentId }}</td>
+
+          <td>
+            <span class="status-pill" [attr.data-status]="order.orderStatus">
+               {{ order.orderStatus }}
+            </span>
+          </td>
+
+          <td>{{ order.deliveryDate | date:'medium' }}</td>
+
+          <td class="date-cell">{{ order.createdAt | date:'mediumDate' }}</td>
+
+          <td>
+            <div class="action-grid">
+              <button class="btn-action btn-confirm" (click)="updateStatus(order.id,'confirmed')" title="Confirm Order">
+                Confirm
+              </button>
+              <button class="btn-action btn-ship" (click)="updateStatus(order.id,'ship')" title="Ship Order">
+                Ship
+              </button>
+              <button class="btn-action btn-deliver" (click)="updateStatus(order.id,'deliver')" title="Deliver Order">
+                Deliver
+              </button>
+              <button class="btn-action btn-cancel" (click)="updateStatus(order.id,'cancel')" title="Cancel Order">
+                Cancel
+              </button>
+              <button class="btn-delete" (click)="deleteOrder(order.id)" title="Remove Record">
+                <mat-icon>delete_outline</mat-icon>
+              </button>
+            </div>
+          </td>
+
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

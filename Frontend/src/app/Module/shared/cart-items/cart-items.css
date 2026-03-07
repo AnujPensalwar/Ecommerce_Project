@@ -1,0 +1,171 @@
+/* --- Main Cart Item Container --- */
+.cart-card {
+  width: 100%; /* Stretches fully side-to-side inside the parent container */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px 0; /* Only top/bottom padding so it stays flush with the edges */
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+}
+
+/* --- Top Section (Image + Details) --- */
+.cart-top {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+}
+
+/* --- Product Image --- */
+.image-box {
+  flex: 0 0 130px; /* Fixed width so the image doesn't resize */
+  height: 130px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Keeps the image from stretching weirdly */
+}
+
+/* --- Product Info --- */
+.product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1; /* Fills all remaining width */
+}
+
+.product-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #f8fafc;
+  margin: 0 0 8px 0;
+  /* Truncate long titles */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.product-meta {
+  font-size: 14px;
+  color: #94a3b8;
+  margin: 0 0 4px 0;
+}
+
+/* --- Pricing Section --- */
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.old-price {
+  font-size: 14px;
+  color: #64748b;
+  text-decoration: line-through;
+  margin: 0;
+}
+
+.new-price {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.discount {
+  font-size: 15px;
+  font-weight: 600;
+  color: #34d399; /* Bright emerald green */
+  margin: 0;
+}
+
+/* --- Bottom Section (Quantity + Remove Button) --- */
+.cart-bottom {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-top: 4px;
+}
+
+/* --- Quantity Controls --- */
+.quantity-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.quantity {
+  font-size: 16px;
+  font-weight: 600;
+  color: #f8fafc;
+  min-width: 24px;
+  text-align: center;
+}
+
+/* --- Angular Material Button Overrides (Dark Theme) --- */
+::ng-deep .cart-bottom .mat-mdc-mini-fab {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #f8fafc !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+::ng-deep .cart-bottom .mat-mdc-mini-fab:not(:disabled):hover {
+  background: rgba(139, 92, 246, 0.6) !important; /* Purple accent on hover */
+  border-color: rgba(139, 92, 246, 0.8);
+  transform: scale(1.05);
+}
+
+::ng-deep .cart-bottom .mat-mdc-mini-fab:disabled {
+  background: rgba(255, 255, 255, 0.02) !important;
+  color: #475569 !important;
+  border-color: transparent;
+}
+
+/* Remove Button Styling */
+::ng-deep .remove-btn.mat-mdc-button-stroked {
+  border-color: rgba(248, 113, 113, 0.3) !important;
+  color: #f87171 !important; /* Soft red text to indicate deletion */
+  transition: all 0.2s ease;
+}
+
+::ng-deep .remove-btn.mat-mdc-button-stroked:hover {
+  background: rgba(248, 113, 113, 0.1) !important;
+  border-color: #f87171 !important;
+}
+
+/* --- Mobile Responsiveness Adjustments --- */
+@media (max-width: 600px) {
+  .cart-top {
+    gap: 16px;
+  }
+  
+  .image-box {
+    flex: 0 0 100px;
+    height: 100px;
+  }
+  
+  .product-title {
+    font-size: 16px;
+  }
+  
+  .new-price {
+    font-size: 18px;
+  }
+  
+  .cart-bottom {
+    /* Pushes the remove button to the far right on mobile */
+    justify-content: space-between; 
+    gap: 16px;
+  }
+}

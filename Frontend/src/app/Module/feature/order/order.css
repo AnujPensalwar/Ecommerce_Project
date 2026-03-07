@@ -1,0 +1,139 @@
+/* --- Page Wrapper --- */
+.orders-page {
+  padding: 40px 5%;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+}
+
+/* --- Header Styling --- */
+.orders-header {
+  font-size: 32px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 40px;
+  background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -1px;
+}
+
+/* --- Layout Grid --- */
+.orders-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* --- Left Filter Column --- */
+.filter-column {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  position: sticky;
+  top: 100px; /* Sticks while scrolling orders */
+}
+
+.filter-heading {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.filter-item {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.filter-label {
+  color: #cbd5e1; /* Bright slate for readability */
+  font-size: 15px;
+  margin-left: 8px;
+}
+
+/* --- Right Orders Column --- */
+.orders-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-card-wrapper {
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.order-card-wrapper:hover {
+  transform: scale(1.01);
+  filter: brightness(1.1);
+}
+
+/* --- Angular Material Checkbox Customization --- */
+::ng-deep .mat-mdc-checkbox-label {
+  color: #cbd5e1 !important;
+}
+
+/* High Visibility for the checkbox box */
+::ng-deep .mdc-checkbox .mdc-checkbox__native-control:enabled:not(:checked) ~ .mdc-checkbox__background {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Checkbox Color when checked (Purple Accent) */
+::ng-deep .mat-mdc-checkbox.mat-accent {
+  --mdc-checkbox-selected-focus-icon-color: #8b5cf6;
+  --mdc-checkbox-selected-hover-icon-color: #8b5cf6;
+  --mdc-checkbox-selected-icon-color: #8b5cf6;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 900px) {
+  .orders-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-column {
+    position: relative;
+    top: 0;
+    margin-bottom: 24px;
+  }
+
+  .orders-header {
+    font-size: 26px;
+    text-align: center;
+  }
+}
+
+/* Smooth entry animation */
+.order-card-wrapper {
+  animation: fadeInSlide 0.5s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Logic for staggered animation delay */
+.order-card-wrapper:nth-child(1) { animation-delay: 0.1s; }
+.order-card-wrapper:nth-child(2) { animation-delay: 0.2s; }
+.order-card-wrapper:nth-child(3) { animation-delay: 0.3s; }

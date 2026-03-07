@@ -1,0 +1,59 @@
+/* --- Carousel Main Container --- */
+.carousel-container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  
+  /* Matches your glassmorphism dark theme */
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  
+  /* Standard hero banner aspect ratio. Adjust this if you want it taller/shorter */
+  aspect-ratio: 16 / 6;
+  min-height: 250px; 
+  max-height: 600px;
+  margin: 20px 0;
+}
+
+/* --- Carousel Track --- */
+.carousel {
+  display: flex;
+  height: 100%;
+  /* Premium, smooth sliding animation */
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform; /* Optimizes performance for animations */
+}
+
+/* --- Individual Carousel Slide --- */
+.carousel-item {
+  min-width: 100%; /* Forces each item to take up the full container width */
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.2); /* Placeholder color before image loads */
+}
+
+/* --- Image Styling --- */
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures images fill the space without stretching */
+  object-position: center;
+  
+  /* Slightly dims the images so they don't blind the user on a dark theme */
+  filter: brightness(0.85);
+  transition: filter 0.3s ease, transform 6s ease; /* Very slow zoom effect setup */
+}
+
+/* Optional: Subtle zoom and brighten effect when the user hovers over the banner */
+.carousel-container:hover .carousel-item img {
+  filter: brightness(1);
+  transform: scale(1.03); 
+}
