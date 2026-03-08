@@ -84,6 +84,7 @@ submitForm(): void {
   }
 
   this.dialog.closeAll();
+  this.cd.detectChanges();
  
 
 }, 300);
