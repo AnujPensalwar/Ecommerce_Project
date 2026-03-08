@@ -87,7 +87,7 @@ submitForm(): void {
   this.cd.detectChanges();
  
 
-}, 300);
+}, 1200);
   }
   
 
