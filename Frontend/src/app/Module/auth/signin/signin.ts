@@ -65,32 +65,28 @@ submitForm(): void {
 
     this.authService.login(this.loginForm.value);
 
- setTimeout(() => {
+    const interval = setInterval(() => {
 
-  const token = localStorage.getItem('jwt');
+      const token = localStorage.getItem('jwt');
 
-  if (!token) {
-    return; 
+      if (!token) return;
+
+      clearInterval(interval);
+
+      const payload = JSON.parse(atob(token.split('.')[1]));
+
+      if (payload.authorities === 'ROLE_ADMIN') {
+        window.location.href = '/admin/dashboard';
+      } else {
+        window.location.href = '/';
+      }
+
+      this.dialog.closeAll();
+      this.cd.detectChanges();
+
+    }, 100);
+
   }
-
-  const payload = JSON.parse(atob(token.split('.')[1]));
-
-  if (payload.authorities === 'ROLE_ADMIN') {
-     window.location.href = '/admin/dashboard';
-    
-  } else {
-   window.location.href = '/';
-   
-  }
-
-  this.dialog.closeAll();
-  this.cd.detectChanges();
- 
-
-}, 1200);
-  }
-  
-
 }
 }
 
