@@ -1,8 +1,8 @@
 package com.anuj.config;
 
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 import java.util.Collections;
-
 import org.jspecify.annotations.Nullable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,8 +14,6 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
-
-import jakarta.servlet.http.HttpServletRequest;
 
 @Configuration
 public class AppConfig {
@@ -37,7 +35,8 @@ public class AppConfig {
 			     
 			     cfg.setAllowedOrigins(Arrays.asList(
 			    		 "http://localhost:3000",
-			    		 "http://localhost:4200"
+			    		 "http://localhost:4200",
+						 "http://13.51.255.51"
 			    		 ));
 			           cfg.setAllowedMethods(Collections.singletonList("*"));
 			           cfg.setAllowCredentials(true);
