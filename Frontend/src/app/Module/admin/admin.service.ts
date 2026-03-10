@@ -27,7 +27,7 @@ export class AdminService {
 
 
   getAllUsers() {
-  return this.http.get("http://localhost:8080/api/admin/users/", {
+  return this.http.get(`${this.API_BASE_URL}/api/admin/users/`, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("jwt")}`
     }
@@ -38,7 +38,7 @@ export class AdminService {
 
 updateOrderStatus(id: number, action: string) {
   return this.http.put(
-    `http://localhost:8080/api/admin/orders/${id}/${action}`,
+    `${this.API_BASE_URL}/api/admin/orders/${id}/${action}`,
     {},
     {
       headers: {
@@ -50,7 +50,7 @@ updateOrderStatus(id: number, action: string) {
 
 deleteOrder(id: number) {
   return this.http.delete(
-    `http://localhost:8080/api/admin/orders/${id}/delete`,
+    `${this.API_BASE_URL}/api/admin/orders/${id}/delete`,
     {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("jwt")}`
