@@ -8,16 +8,19 @@ export const adminGuard: CanActivateFn = (route, state) => {
   if (token) {
     try {
       const payload = JSON.parse(atob(token.split('.')[1]));
-      // The Guard should check the JWT directly for the fastest check
+      const expiry = payload.exp * 1000;
+      
       if (payload.authorities === 'ROLE_ADMIN') {
         return true;
-      }
+      } else if (Date.now() >= expiry) {
+  localStorage.removeItem('jwt');  
+}
     } catch (e) {
       console.error("JWT Error in Guard", e);
     }
   }
 
-  // If not admin, send to home
+  
   router.navigate(['/']);
   return false;
 };
