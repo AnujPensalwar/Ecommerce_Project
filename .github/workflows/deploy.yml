@@ -63,5 +63,6 @@ jobs:
 
           docker run -d \
             --name frontend \
+            --network ecommerce-net \
             -p 80:80 \
             ${{ secrets.DOCKER_USERNAME }}/ecommerce-frontend
