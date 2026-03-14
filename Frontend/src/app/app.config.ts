@@ -9,6 +9,9 @@ import { provideHttpClient } from '@angular/common/http';
 import { productReducer } from './State/Product/product.reducer';
 import { cartReducer } from './State/cart/cart.reducer';
 import { orderReducer } from './State/Order/order.reducer';
+import { withInterceptors } from '@angular/common/http';
+import { authInterceptor } from './auth.interceptor';
+
 
 
 export const appConfig: ApplicationConfig = {
@@ -20,6 +23,6 @@ export const appConfig: ApplicationConfig = {
       cart: cartReducer,
       order: orderReducer
     }),
-    provideRouterStore(), provideHttpClient()
+    provideRouterStore(), provideHttpClient(withInterceptors([authInterceptor]))
   ]
 };
